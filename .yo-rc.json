@@ -1,0 +1,7 @@
+{
+  "generator-semantic-module": {
+    "packager": "npm",
+    "commitizen-adapter": "@commitlint/prompt",
+    "commitlint-config": "@commitlint/config-conventional"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "env": {
+    "jest": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "no-undef": "off",
+        "no-unused-vars": "off",
+        "no-restricted-globals": "off"
+      }
+    }
+  ],
+  "rules": {
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
+    "no-underscore-dangle": [2, { "allowAfterThis": true }]
+  }
+}

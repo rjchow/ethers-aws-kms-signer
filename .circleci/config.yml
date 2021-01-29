@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: 'circleci/node:latest'
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: npm install
+      - run:
+          name: lint
+          command: npm run lint
+      - run:
+          name: build
+          command: npm run build
+      - run: npm run commitlint-circle
+      - run:
+          name: release
+          command: npm run semantic-release
