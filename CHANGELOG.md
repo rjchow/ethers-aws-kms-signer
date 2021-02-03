@@ -1,3 +1,15 @@
+# 1.0.0 (2021-02-03)
+
+
+### Features
+
+* release ([25d97cb](https://github.com/rjchow/ethers-aws-kms-signer/commit/25d97cb3a4e34f7c16e26798ffd889e6f953f758))
+
+
+### Miscellaneous
+
+* init ([d4bc063](https://github.com/rjchow/ethers-aws-kms-signer/commit/d4bc0631df3485f0b238fa1d45ff8062d7f78cbd))
+
 ## [1.9.3](https://github.com/rjchow/nod/compare/v1.9.2...v1.9.3) (2021-01-25)
 
 
