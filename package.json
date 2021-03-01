@@ -33,7 +33,7 @@
     "commitlint-circle": "commitlint-circle",
     "upgrade-deps": "npx updtr"
   },
-  "types": "dist/ts",
+  "types": "dist/ts/src/index.d.ts",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
