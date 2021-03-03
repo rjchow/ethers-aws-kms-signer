@@ -1,6 +1,6 @@
 {
   "name": "ethers-aws-kms-signer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An Ethers.js compatible signer that connects to AWS KMS",
   "license": "MIT",
   "repository": "rjchow/ethers-aws-kms-signer",

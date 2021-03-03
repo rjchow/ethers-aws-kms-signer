@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/rjchow/ethers-aws-kms-signer/compare/v1.0.0...v1.1.0) (2021-03-03)
+
+
+### Features
+
+* fixed exported ts declaration path ([69d29b6](https://github.com/rjchow/ethers-aws-kms-signer/commit/69d29b66a99f9bc1c14157a3fd5b63cc420e84a2))
+* force release ([01b44a4](https://github.com/rjchow/ethers-aws-kms-signer/commit/01b44a408e3dd77708717419c681ad1230bfb3f2))
+
 # 1.0.0 (2021-02-03)
 
 
