@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/rjchow/ethers-aws-kms-signer/compare/v1.1.0...v1.2.0) (2021-06-04)
+
+
+### Features
+
+* allow aws credentials to be provided in other ways ([a08ed1f](https://github.com/rjchow/ethers-aws-kms-signer/commit/a08ed1f7b84b97df3bb484f3206e5e10ecd49dae))
+* allow aws credentials to be provided in other ways ([40ef566](https://github.com/rjchow/ethers-aws-kms-signer/commit/40ef566f7a5099e5e8b00d7a7c1e51a62285286b))
+
 # [1.1.0](https://github.com/rjchow/ethers-aws-kms-signer/compare/v1.0.0...v1.1.0) (2021-03-03)
 
 
