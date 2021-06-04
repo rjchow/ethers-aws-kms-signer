@@ -8,6 +8,8 @@ This is a wallet or signer that can be used together with [Ethers.js](https://gi
 npm i ethers-aws-kms-signer
 ```
 
+You can provide the AWS Credentials using the various ways listed [here](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html) depending on how you are using this library. You can also explicitly specify them when invoking the `AwsKmsSigner` constructor as shown below.
+
 ```js
 import { AwsKmsSigner } from "ethers-aws-kms-signer";
 

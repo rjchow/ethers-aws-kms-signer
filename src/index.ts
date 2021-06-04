@@ -2,8 +2,9 @@ import { ethers } from "ethers";
 import { getPublicKey, getEthereumAddress, requestKmsSignature, determineCorrectV } from "./util/aws-kms-utils";
 
 export interface AwsKmsSignerCredentials {
-  accessKeyId: string;
-  secretAccessKey: string;
+  accessKeyId?: string;
+  secretAccessKey?: string;
+  sessionToken?: string;
   region: string;
   keyId: string;
 }
