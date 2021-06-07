@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/rjchow/ethers-aws-kms-signer/compare/v1.2.0...v1.3.0) (2021-06-07)
+
+
+### Features
+
+* use carat for dependencies ([a5618da](https://github.com/rjchow/ethers-aws-kms-signer/commit/a5618dab2076275518d95900780ff04d904293a7))
+* use carat for dependencies ([54a143a](https://github.com/rjchow/ethers-aws-kms-signer/commit/54a143ab07af80e1a7c59922d5fccb8e52659144))
+
 # [1.2.0](https://github.com/rjchow/ethers-aws-kms-signer/compare/v1.1.0...v1.2.0) (2021-06-04)
 
 
