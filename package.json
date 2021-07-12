@@ -53,7 +53,7 @@
     "aws-sdk": "^2.922.0",
     "bn.js": "^5.2.0",
     "debug": "^4.3.1",
-    "ethers": "^5.3.0"
+    "ethers": "5.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
