@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/rjchow/ethers-aws-kms-signer/compare/v1.3.0...v1.3.1) (2021-07-12)
+
+
+### Bug Fixes
+
+* fixing ethers version to 5.3.1 because it breaks this library with 5.4.1 ([71ce09b](https://github.com/rjchow/ethers-aws-kms-signer/commit/71ce09bf1a7092afb06cc5c71c561130d30321e9))
+* fixing ethers version to 5.3.1 because it breaks this library with 5.4.1 ([bef444c](https://github.com/rjchow/ethers-aws-kms-signer/commit/bef444c31c80db1404d0bb7f155a9f49d8d7687b))
+
 # [1.3.0](https://github.com/rjchow/ethers-aws-kms-signer/compare/v1.2.0...v1.3.0) (2021-06-07)
 
 
