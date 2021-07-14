@@ -1,3 +1,15 @@
+## [1.3.2](https://github.com/rjchow/ethers-aws-kms-signer/compare/v1.3.1...v1.3.2) (2021-07-14)
+
+
+### Bug Fixes
+
+* ethers v5.4.1 ([a529e69](https://github.com/rjchow/ethers-aws-kms-signer/commit/a529e694fc904a7a6cdc2f680d45a6e65bdbc302))
+
+
+### Miscellaneous
+
+* EthersJS 5.4.0 releases support for EIP1559 new transaction format ([3975790](https://github.com/rjchow/ethers-aws-kms-signer/commit/397579071830940e93a0093f1dfdeddf5f6e5e0b))
+
 ## [1.3.1](https://github.com/rjchow/ethers-aws-kms-signer/compare/v1.3.0...v1.3.1) (2021-07-12)
 
 
