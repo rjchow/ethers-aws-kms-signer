@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { ethers, UnsignedTransaction } from "ethers";
 import { getPublicKey, getEthereumAddress, requestKmsSignature, determineCorrectV } from "./util/aws-kms-utils";
 
 export interface AwsKmsSignerCredentials {
@@ -44,21 +44,10 @@ export class AwsKmsSigner extends ethers.Signer {
   }
 
   async signTransaction(transaction: ethers.utils.Deferrable<ethers.providers.TransactionRequest>): Promise<string> {
-    const tx = await ethers.utils.resolveProperties(transaction);
-    const baseTx: ethers.utils.UnsignedTransaction = {
-      chainId: tx.chainId || undefined,
-      data: tx.data || undefined,
-      gasLimit: tx.gasLimit || undefined,
-      gasPrice: tx.gasPrice || undefined,
-      nonce: tx.nonce ? ethers.BigNumber.from(tx.nonce).toNumber() : undefined,
-      to: tx.to || undefined,
-      value: tx.value || undefined,
-    };
-
-    const transactionSignature = await this._signDigest(
-      ethers.utils.keccak256(ethers.utils.serializeTransaction(baseTx))
-    );
-    return ethers.utils.serializeTransaction(baseTx, transactionSignature);
+    const unsignedTx = await ethers.utils.resolveProperties(transaction);
+    const serializedTx = ethers.utils.serializeTransaction(<UnsignedTransaction>unsignedTx);
+    const transactionSignature = await this._signDigest(ethers.utils.keccak256(serializedTx));
+    return ethers.utils.serializeTransaction(<UnsignedTransaction>unsignedTx, transactionSignature);
   }
 
   connect(provider: ethers.providers.Provider): AwsKmsSigner {
