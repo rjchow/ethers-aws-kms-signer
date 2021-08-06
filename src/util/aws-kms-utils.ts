@@ -21,6 +21,9 @@ const EcdsaPubKey = asn1.define("EcdsaPubKey", function (this: any) {
 /* eslint-enable func-names */
 
 export async function sign(digest: Buffer, kmsCredentials: AwsKmsSignerCredentials) {
+  if (!kmsCredentials.useEnv && (!kmsCredentials.accessKeyId || !kmsCredentials.secretAccessKey)) {
+    throw new Error(`Please provide access-key-id and secret-access-key`);
+  }
   const kms = new KMS(kmsCredentials);
   const params: KMS.SignRequest = {
     // key id or 'Alias/<alias>'
@@ -35,6 +38,9 @@ export async function sign(digest: Buffer, kmsCredentials: AwsKmsSignerCredentia
 }
 
 export async function getPublicKey(kmsCredentials: AwsKmsSignerCredentials) {
+  if (!kmsCredentials.useEnv && (!kmsCredentials.accessKeyId || !kmsCredentials.secretAccessKey)) {
+    throw new Error(`Please provide access-key-id and secret-access-key`);
+  }
   const kms = new KMS(kmsCredentials);
   return kms
     .getPublicKey({
