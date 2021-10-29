@@ -1,6 +1,7 @@
 # ethers-aws-kms-signer
 
-This is a wallet or signer that can be used together with [Ethers.js](https://github.com/ethers-io/ethers.js/) applications.
+This is a wallet or signer that can be used together with [Ethers.js](https://github.com/ethers-io/ethers.js/) applications, using AWS KMS as the key storage.
+For GCP KMS look [here](https://github.com/openlawteam/ethers-gcp-kms-signer)
 
 ## Getting Started
 
