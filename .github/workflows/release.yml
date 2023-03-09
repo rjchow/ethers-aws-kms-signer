@@ -1,8 +1,11 @@
 name: Release
 on:
   push:
-    branches:
-      - master
+    branches: [master, beta]
+
+permissions:
+  contents: write
+
 jobs:
   release:
     name: Release
