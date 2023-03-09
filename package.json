@@ -1,5 +1,5 @@
 {
-  "name": "@openattestation/ethers-aws-kms-signer",
+  "name": "@gds_ace_dlt/ethers-aws-kms-signer",
   "version": "1.3.2",
   "description": "An Ethers.js compatible signer that connects to AWS KMS",
   "license": "MIT",
