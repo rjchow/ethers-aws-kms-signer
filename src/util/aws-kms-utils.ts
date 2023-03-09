@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { KMS } from "aws-sdk";
+import { KMSClient, SignCommand, GetPublicKeyCommand } from "@aws-sdk/client-kms";
 import * as asn1 from "asn1.js";
 import BN from "bn.js";
 import { AwsKmsSignerCredentials } from "../index";
@@ -21,26 +21,26 @@ const EcdsaPubKey = asn1.define("EcdsaPubKey", function (this: any) {
 /* eslint-enable func-names */
 
 export async function sign(digest: Buffer, kmsCredentials: AwsKmsSignerCredentials) {
-  const kms = new KMS(kmsCredentials);
-  const params: KMS.SignRequest = {
-    // key id or 'Alias/<alias>'
-    KeyId: kmsCredentials.keyId,
-    Message: digest,
-    // 'ECDSA_SHA_256' is the one compatible with ECC_SECG_P256K1.
-    SigningAlgorithm: "ECDSA_SHA_256",
-    MessageType: "DIGEST",
-  };
-  const res = await kms.sign(params).promise();
-  return res;
+  const kms = new KMSClient(kmsCredentials);
+  return kms.send(
+    new SignCommand({
+      // key id or 'Alias/<alias>'
+      KeyId: kmsCredentials.keyId,
+      Message: digest,
+      // 'ECDSA_SHA_256' is the one compatible with ECC_SECG_P256K1.
+      SigningAlgorithm: "ECDSA_SHA_256",
+      MessageType: "DIGEST",
+    })
+  );
 }
 
 export async function getPublicKey(kmsCredentials: AwsKmsSignerCredentials) {
-  const kms = new KMS(kmsCredentials);
-  return kms
-    .getPublicKey({
+  const kms = new KMSClient(kmsCredentials);
+  return kms.send(
+    new GetPublicKeyCommand({
       KeyId: kmsCredentials.keyId,
     })
-    .promise();
+  );
 }
 
 export function getEthereumAddress(publicKey: Buffer): string {
@@ -74,11 +74,16 @@ export function findEthereumSig(signature: Buffer) {
 }
 
 export async function requestKmsSignature(plaintext: Buffer, kmsCredentials: AwsKmsSignerCredentials) {
-  const signature = await sign(plaintext, kmsCredentials);
-  if (signature.$response.error || signature.Signature === undefined) {
-    throw new Error(`AWS KMS call failed with: ${signature.$response.error}`);
+  try {
+    const signature = await sign(plaintext, kmsCredentials);
+
+    if (signature.$metadata.httpStatusCode !== 200 || signature.Signature === undefined)
+      throw new Error(`AWS KMS call failed with: ${JSON.stringify(signature)}`);
+
+    return findEthereumSig(signature.Signature as Buffer);
+  } catch (e) {
+    throw new Error(`AWS KMS call failed with: ${JSON.stringify(e)}`);
   }
-  return findEthereumSig(signature.Signature as Buffer);
 }
 
 function recoverPubKeyFromSig(msg: Buffer, r: BN, s: BN, v: number) {
