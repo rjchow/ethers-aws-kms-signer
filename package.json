@@ -49,6 +49,7 @@
     "generator-nod"
   ],
   "dependencies": {
+    "@aws-sdk/client-kms": "^3.287.0",
     "@types/node": "^18.14.6",
     "asn1.js": "^5.4.1",
     "aws-sdk": "^2.1331.0",
