@@ -77,7 +77,7 @@ export async function requestKmsSignature(plaintext: Buffer, kmsCredentials: Aws
   try {
     const signature = await sign(plaintext, kmsCredentials);
 
-    if (signature.$metadata.httpStatusCode || signature.Signature === undefined)
+    if (signature.$metadata.httpStatusCode !== 200 || signature.Signature === undefined)
       throw new Error(`AWS KMS call failed with: ${JSON.stringify(signature)}`);
 
     return findEthereumSig(signature.Signature as Buffer);
