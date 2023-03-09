@@ -75,17 +75,16 @@ export function findEthereumSig(signature: Buffer) {
 
 export async function requestKmsSignature(plaintext: Buffer, kmsCredentials: AwsKmsSignerCredentials) {
   let signature;
-  let error;
   try {
     signature = await sign(plaintext, kmsCredentials);
-  } catch (e) {
-    error = e;
-  }
 
-  if (signature.$metadata.httpStatusCode !== 200 || signature.Signature === undefined) {
-    throw new Error(`AWS KMS call failed with: ${JSON.stringify(error)}`);
+    if (signature.$metadata.httpStatusCode || signature.Signature === undefined)
+      throw new Error(`AWS KMS call failed with: ${JSON.stringify(signature)}`);
+
+    return findEthereumSig(signature.Signature as Buffer);
+  } catch (e) {
+    throw new Error(`AWS KMS call failed with: ${JSON.stringify(e)}`);
   }
-  return findEthereumSig(signature.Signature as Buffer);
 }
 
 function recoverPubKeyFromSig(msg: Buffer, r: BN, s: BN, v: number) {
