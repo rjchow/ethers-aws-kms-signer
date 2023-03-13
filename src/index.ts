@@ -22,7 +22,7 @@ export class AwsKmsSigner extends ethers.Signer {
   async getAddress(): Promise<string> {
     if (this.ethereumAddress === undefined) {
       const key = await getPublicKey(this.kmsCredentials);
-      this.ethereumAddress = getEthereumAddress(key.PublicKey as Buffer);
+      this.ethereumAddress = getEthereumAddress(Buffer.from(key.PublicKey));
     }
     return Promise.resolve(this.ethereumAddress);
   }
