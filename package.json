@@ -49,13 +49,13 @@
     "generator-nod"
   ],
   "dependencies": {
-    "@aws-sdk/client-kms": "^3.287.0",
+    "@aws-sdk/client-kms": "^3.391.0",
     "@types/node": "^18.14.6",
     "asn1.js": "^5.4.1",
-    "aws-sdk": "^2.1331.0",
+    "aws-sdk": "^2.1438.0",
     "bn.js": "^5.2.1",
     "debug": "^4.3.4",
-    "ethers": "^5.4.1"
+    "ethers": "^5.4.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
