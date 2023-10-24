@@ -7,6 +7,7 @@ export interface AwsKmsSignerCredentials {
   sessionToken?: string;
   region: string;
   keyId: string;
+  endpoint?: string;
 }
 export class AwsKmsSigner extends ethers.Signer {
   kmsCredentials: AwsKmsSignerCredentials;
